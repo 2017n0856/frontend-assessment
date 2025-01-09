@@ -4,8 +4,15 @@ import { Form, Input, DatePicker, Button, message, Spin } from "antd";
 import moment from "moment";
 import { fetchProject, updateProject } from "../api/projectApi";
 import { useFavorite } from "../context/FavoriteContext";
+import styled from "styled-components";
 
 const { TextArea } = Input;
+
+const StyledForm = styled(Form)`
+  && {
+    max-width: 70%;
+  }
+`;
 
 function ProjectDetail() {
   const { id } = useParams();
@@ -55,7 +62,15 @@ function ProjectDetail() {
     return <Spin />;
   } else {
     return (
-      <Form form={form} layout="horizontal" onFinish={onFinish}>
+      <StyledForm
+        form={form}
+        layout="horizontal"
+        onFinish={onFinish}
+        colon={false}
+        labelAlign="left"
+        labelCol={{ flex: "10%" }}
+        labelWrap
+      >
         <Form.Item name="id" label="Project ID">
           {project.name}
         </Form.Item>
@@ -94,12 +109,12 @@ function ProjectDetail() {
         >
           <Input />
         </Form.Item>
-        <Form.Item>
+        <Form.Item label=" ">
           <Button type="primary" htmlType="submit">
             Update
           </Button>
         </Form.Item>
-      </Form>
+      </StyledForm>
     );
   }
 }

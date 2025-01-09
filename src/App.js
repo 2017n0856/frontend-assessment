@@ -5,10 +5,11 @@ import Layout from "./components/Layout";
 import ProjectList from "./components/ProjectList";
 import ProjectDetail from "./components/ProjectDetail";
 import { FavoriteProvider } from "./context/FavoriteContext";
+import theme from "./Utils/theme";
 
 function App() {
   return (
-    <ConfigProvider>
+    <ConfigProvider theme={theme}>
       <FavoriteProvider>
         <Router>
           <Layout>
